@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pragma — Brand intelligence for India's premium D2C.</title>
+  <meta name="description" content="Pragma is an AI-powered brand intelligence agency for India's most ambitious D2C companies. We pair AI-driven research with senior strategic judgement." />
+  <meta name="theme-color" content="#0F1A0F" />
+  <link rel="canonical" href="https://pragmaintelligence.in/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pragmaintelligence.in/" />
+  <meta property="og:title" content="Pragma — Brand intelligence for India's premium D2C." />
+  <meta property="og:description" content="An AI-powered brand intelligence agency. We pair machine-scale research with senior strategic judgement — so the brands you build aren't built on guesses." />
+  <meta property="og:site_name" content="Pragma Intelligence" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pragma — Brand intelligence for India's premium D2C." />
+  <meta name="twitter:description" content="An AI-powered brand intelligence agency. We pair machine-scale research with senior strategic judgement." />
+
+  <!-- Favicon (inline SVG: forest with gold mark) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230F1A0F'/%3E%3Crect x='11' y='11' width='10' height='10' fill='%23C8A96E'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- BRAND TOKENS ---------- */
+    :root {
+      --forest:   #0F1A0F;
+      --mist:     #E8F0E8;
+      --sona:     #C8A96E;
+      --max:      1440px;
+      --gutter:   clamp(20px, 4vw, 56px);
+
+      --text-on-dark:       #E8F0E8;
+      --text-on-dark-dim:   rgba(232, 240, 232, 0.72);
+      --text-on-dark-mute:  rgba(232, 240, 232, 0.42);
+      --hair-on-dark:       rgba(232, 240, 232, 0.10);
+
+      --text-on-light:      #0F1A0F;
+      --text-on-light-dim:  rgba(15, 26, 15, 0.72);
+      --text-on-light-mute: rgba(15, 26, 15, 0.42);
+      --hair-on-light:      rgba(15, 26, 15, 0.10);
+    }
+
+    /* ---------- RESET ---------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+    body {
+      background: var(--forest);
+      color: var(--text-on-dark);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ---------- TYPOGRAPHY ---------- */
+    .label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--sona);
+    }
+    .display { font-weight: 200; letter-spacing: -0.04em; line-height: 0.95; }
+
+    /* ---------- TOP BAR ---------- */
+    .top-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px) saturate(120%);
+      -webkit-backdrop-filter: blur(14px) saturate(120%);
+      background: rgba(15, 26, 15, 0.78);
+      border-bottom: 1px solid var(--hair-on-dark);
+    }
+    .top-bar__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px var(--gutter);
+      max-width: var(--max); margin: 0 auto;
+    }
+    .wordmark {
+      font-size: 15px; font-weight: 600; letter-spacing: 0.32em;
+      color: var(--mist);
+    }
+    .wordmark__dot {
+      display: inline-block; width: 5px; height: 5px;
+      background: var(--sona);
+      margin-left: 8px; transform: translateY(-3px);
+    }
+    .top-bar__nav { display: flex; gap: 36px; align-items: center; }
+    .top-bar__nav a {
+      font-size: 13px; font-weight: 400;
+      color: var(--text-on-dark-dim);
+      transition: color 180ms ease;
+    }
+    .top-bar__nav a:hover { color: var(--mist); }
+
+    /* ---------- HERO (DARK) ---------- */
+    .hero {
+      padding: 168px var(--gutter) 96px;
+      max-width: var(--max); margin: 0 auto;
+    }
+    .hero__eyebrow {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 56px;
+      opacity: 0; animation: fadeUp 900ms ease-out 100ms forwards;
+    }
+    .hero__eyebrow .line { flex: 0 0 56px; height: 1px; background: var(--sona); }
+    .hero__headline {
+      font-size: clamp(56px, 11.5vw, 184px);
+      font-weight: 200; letter-spacing: -0.045em; line-height: 0.92;
+      color: var(--mist);
+      max-width: 1200px; margin-bottom: 56px;
+    }
+    .hero__headline .word {
+      display: inline-block; opacity: 0; transform: translateY(40px);
+      animation: rise 1100ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hero__headline .word--gold {
+      color: var(--sona); font-style: italic; font-weight: 300;
+    }
+    .hero__headline .word:nth-child(1) { animation-delay: 200ms; }
+    .hero__headline .word:nth-child(2) { animation-delay: 320ms; }
+    .hero__headline .word:nth-child(3) { animation-delay: 440ms; }
+    .hero__sub {
+      max-width: 720px;
+      opacity: 0; animation: fadeUp 900ms ease-out 720ms forwards;
+    }
+    .hero__sub p {
+      font-size: clamp(16px, 1.25vw, 19px);
+      line-height: 1.6;
+      color: var(--text-on-dark-dim);
+    }
+    @media (max-width: 860px) {
+      .hero { padding: 132px var(--gutter) 64px; }
+    }
+
+    /* ---------- CAPABILITIES STRIP (LIGHT) ---------- */
+    .strip {
+      background: var(--mist);
+      border-top: 1px solid var(--hair-on-light);
+      border-bottom: 1px solid var(--hair-on-light);
+      padding: 28px 0;
+      overflow: hidden;
+    }
+    .strip__inner {
+      display: flex; gap: 64px; align-items: center;
+      animation: marquee 38s linear infinite;
+      width: max-content;
+    }
+    .strip__item {
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-on-light-dim);
+      white-space: nowrap;
+      display: flex; align-items: center; gap: 64px;
+    }
+    .strip__item::after {
+      content: ""; width: 4px; height: 4px;
+      background: var(--sona);
+    }
+
+    /* ---------- MISSION (DARK) ---------- */
+    .mission {
+      padding: 144px var(--gutter);
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 220px 1fr;
+      gap: 80px; align-items: start;
+    }
+    .mission__statement {
+      font-size: clamp(28px, 3.6vw, 56px);
+      font-weight: 200; line-height: 1.18; letter-spacing: -0.02em;
+      color: var(--mist);
+      max-width: 1000px;
+    }
+    .mission__statement em {
+      color: var(--sona); font-style: italic; font-weight: 300;
+    }
+    @media (max-width: 860px) {
+      .mission { grid-template-columns: 1fr; gap: 32px; padding: 96px var(--gutter); }
+    }
+
+    /* ---------- SERVICES (DARK SHELL, SPLIT ROWS) ---------- */
+    .services {
+      padding: 144px var(--gutter) 0;
+      max-width: var(--max); margin: 0 auto;
+    }
+    .services__head {
+      display: grid; grid-template-columns: 220px 1fr auto;
+      gap: 64px; align-items: end;
+      padding-bottom: 80px;
+    }
+    .services__title {
+      font-size: clamp(40px, 5.5vw, 88px);
+      font-weight: 200; line-height: 0.95; letter-spacing: -0.035em;
+      color: var(--mist);
+    }
+    .services__count {
+      font-size: 13px; font-weight: 400; letter-spacing: 0.18em;
+      color: var(--text-on-dark-mute); text-transform: uppercase;
+    }
+    /* Break out of the parent's gutter so service rows can run viewport-edge to viewport-edge */
+    .services__list {
+      margin: 0 calc(-1 * var(--gutter)) 144px;
+    }
+
+    /* Each service row: split horizontally into LIGHT head + DARK body */
+    .service {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      align-items: stretch;
+    }
+    /* LEFT half — light Mist strip with the headline group */
+    .service__head {
+      background: var(--mist);
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 32px;
+      padding: 48px 48px 48px var(--gutter);
+      align-items: start;
+      border-bottom: 1px solid var(--hair-on-light);
+    }
+    .service:first-child .service__head {
+      border-top: 1px solid var(--hair-on-light);
+    }
+    /* RIGHT half — dark Forest with the description and end marker */
+    .service__body {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      padding: 48px var(--gutter) 48px 48px;
+      align-items: start;
+      border-bottom: 1px solid var(--hair-on-dark);
+    }
+    .service:first-child .service__body {
+      border-top: 1px solid var(--hair-on-dark);
+    }
+
+    /* Inside the LIGHT head — gold number, forest name, dim italic descriptor */
+    .service__num {
+      font-size: 13px; font-weight: 500; letter-spacing: 0.18em;
+      color: var(--sona);
+      padding-top: 8px;
+      text-transform: uppercase;
+    }
+    .service__name {
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 300; letter-spacing: -0.025em; line-height: 1;
+      color: var(--forest);
+    }
+    .service__name em {
+      font-style: italic; font-weight: 300;
+      color: var(--text-on-light-dim);
+      display: block; font-size: 0.4em;
+      letter-spacing: 0.04em; margin-top: 12px;
+    }
+
+    /* Inside the DARK body — mist text, dim paragraph, mute marker */
+    .service__desc {
+      font-size: 16px; line-height: 1.6;
+      color: var(--text-on-dark-dim);
+      max-width: 480px;
+    }
+    .service__marker {
+      font-size: 20px;
+      color: var(--text-on-dark-mute);
+    }
+
+    @media (max-width: 960px) {
+      .services__head { grid-template-columns: 1fr; gap: 24px; }
+      /* Stack head above body on small screens */
+      .service { grid-template-columns: 1fr; }
+      .service__head {
+        grid-template-columns: 70px 1fr;
+        gap: 16px;
+        padding: 32px var(--gutter);
+      }
+      .service__body {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 32px var(--gutter);
+      }
+      .service__marker { display: none; }
+    }
+
+    /* ---------- APPROACH (DARK) ---------- */
+    .approach {
+      padding: 160px var(--gutter);
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 96px;
+    }
+    .approach__heading {
+      font-size: clamp(36px, 4.5vw, 72px);
+      font-weight: 200; letter-spacing: -0.03em; line-height: 1;
+      color: var(--mist);
+      margin-top: 24px;
+    }
+    .approach__heading em {
+      color: var(--sona); font-style: italic; font-weight: 300;
+    }
+    .approach__body p {
+      font-size: 17px; line-height: 1.65;
+      color: var(--text-on-dark-dim);
+      margin-bottom: 24px; max-width: 540px;
+    }
+    .approach__pillars {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+      margin-top: 56px; padding-top: 40px;
+      border-top: 1px solid var(--hair-on-dark);
+    }
+    .pillar__num { font-size: 12px; letter-spacing: 0.2em; color: var(--sona); margin-bottom: 12px; }
+    .pillar__name { font-size: 16px; font-weight: 500; color: var(--mist); margin-bottom: 8px; }
+    .pillar__desc { font-size: 13px; line-height: 1.5; color: var(--text-on-dark-mute); }
+    @media (max-width: 960px) {
+      .approach { grid-template-columns: 1fr; gap: 48px; padding: 96px var(--gutter); }
+      .approach__pillars { grid-template-columns: 1fr; gap: 24px; }
+    }
+
+    /* ---------- FINAL CTA (DARK) ---------- */
+    .final-cta {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 120px var(--gutter) 168px;
+    }
+    .final-cta__label { margin-bottom: 56px; display: inline-block; }
+    .final-cta__line {
+      font-size: clamp(48px, 8vw, 128px);
+      font-weight: 200; letter-spacing: -0.04em; line-height: 0.95;
+      color: var(--mist);
+      margin-bottom: 64px;
+    }
+    .final-cta__line em {
+      color: var(--sona); font-style: italic; font-weight: 300;
+    }
+    .final-cta__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      font-size: clamp(20px, 2.4vw, 34px);
+      font-weight: 300;
+      color: var(--mist);
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--hair-on-dark);
+      transition: color 200ms ease, border-color 200ms ease;
+    }
+    .final-cta__link:hover {
+      color: var(--sona);
+      border-bottom-color: var(--sona);
+    }
+
+    /* ---------- FOOTER (DARK) ---------- */
+    .footer {
+      border-top: 1px solid var(--hair-on-dark);
+      padding: 64px var(--gutter) 48px;
+      max-width: var(--max); margin: 0 auto;
+    }
+    .footer__top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px; padding-bottom: 80px;
+    }
+    .footer__brand {
+      font-size: clamp(64px, 10vw, 160px);
+      font-weight: 200; letter-spacing: -0.05em; line-height: 0.85;
+      color: var(--mist);
+    }
+    .footer__brand .dot { color: var(--sona); }
+    .footer__col h4 {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-on-dark-mute); margin-bottom: 20px;
+    }
+    .footer__col a, .footer__col p {
+      display: block;
+      font-size: 14px; font-weight: 300;
+      color: var(--text-on-dark-dim);
+      margin-bottom: 10px;
+      transition: color 180ms ease;
+    }
+    .footer__col a:hover { color: var(--sona); }
+    .footer__bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 32px;
+      border-top: 1px solid var(--hair-on-dark);
+      font-size: 12px;
+      color: var(--text-on-dark-mute);
+      letter-spacing: 0.04em;
+    }
+    .footer__bottom .made { display: flex; align-items: center; gap: 8px; }
+    .footer__bottom .made .pulse {
+      width: 6px; height: 6px; background: var(--sona);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @media (max-width: 860px) {
+      .footer__top { grid-template-columns: 1fr 1fr; }
+      .footer__brand { grid-column: 1 / -1; margin-bottom: 32px; }
+      .footer__bottom { flex-direction: column; gap: 16px; align-items: flex-start; }
+    }
+
+    /* ---------- ANIMATIONS ---------- */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes rise   { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes pulse  { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <div class="top-bar__inner">
+      <a href="#" class="wordmark">PRAGMA<span class="wordmark__dot"></span></a>
+      <nav class="top-bar__nav">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO (DARK) -->
+  <section class="hero">
+    <div class="hero__eyebrow">
+      <span class="line"></span>
+      <span class="label">Brand intelligence&nbsp;·&nbsp;Est. 2026&nbsp;·&nbsp;India</span>
+    </div>
+    <h1 class="hero__headline display">
+      <span class="word">Intelligence</span>
+      <span class="word word--gold">over</span>
+      <span class="word">instinct.</span>
+    </h1>
+    <div class="hero__sub">
+      <p>
+        Pragma is an AI-powered brand intelligence agency for India's most ambitious D2C companies. We pair machine-scale research with senior strategic judgement — so the brands you build aren't built on guesses.
+      </p>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES STRIP (LIGHT) -->
+  <div class="strip">
+    <div class="strip__inner">
+      <span class="strip__item">Brand Diagnostics</span>
+      <span class="strip__item">Category Intelligence</span>
+      <span class="strip__item">Consumer Sentiment</span>
+      <span class="strip__item">Competitive Mapping</span>
+      <span class="strip__item">Positioning Strategy</span>
+      <span class="strip__item">AI-Native Research</span>
+      <span class="strip__item">Brand Diagnostics</span>
+      <span class="strip__item">Category Intelligence</span>
+      <span class="strip__item">Consumer Sentiment</span>
+      <span class="strip__item">Competitive Mapping</span>
+      <span class="strip__item">Positioning Strategy</span>
+      <span class="strip__item">AI-Native Research</span>
+    </div>
+  </div>
+
+  <!-- MISSION (DARK) -->
+  <section class="mission">
+    <span class="label">Mission</span>
+    <p class="mission__statement">
+      Premium D2C brands in India deserve more than dashboards and decks. We help them <em>see the market the way the market sees them</em> — and turn that clarity into decisions worth defending.
+    </p>
+  </section>
+
+  <!-- SERVICES (DARK SHELL, SPLIT ROWS: LIGHT HEAD | DARK BODY) -->
+  <section class="services" id="services">
+    <div class="services__head">
+      <span class="label">Engagements</span>
+      <h2 class="services__title">Three ways<br>to work with us.</h2>
+      <span class="services__count">03 Tiers</span>
+    </div>
+
+    <div class="services__list">
+      <article class="service">
+        <div class="service__head">
+          <span class="service__num">01 / Entry</span>
+          <h3 class="service__name">The Audit<em>One-time diagnostic</em></h3>
+        </div>
+        <div class="service__body">
+          <p class="service__desc">A focused brand intelligence audit. We pressure-test your positioning, map your category, and surface the three insights you can't see from inside the building.</p>
+          <span class="service__marker">—</span>
+        </div>
+      </article>
+
+      <article class="service">
+        <div class="service__head">
+          <span class="service__num">02 / Sprint</span>
+          <h3 class="service__name">The Sprint<em>4-week strategic intervention</em></h3>
+        </div>
+        <div class="service__body">
+          <p class="service__desc">Audit plus action. Positioning rebuild, narrative architecture, and an AI-powered category read — delivered as decisions, not deliverables.</p>
+          <span class="service__marker">—</span>
+        </div>
+      </article>
+
+      <article class="service">
+        <div class="service__head">
+          <span class="service__num">03 / Embed</span>
+          <h3 class="service__name">The Embed<em>Always-on retainer</em></h3>
+        </div>
+        <div class="service__body">
+          <p class="service__desc">Pragma as your brand intelligence layer. Continuous monitoring, monthly strategic reads, and on-call judgement when the stakes are real.</p>
+          <span class="service__marker">—</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- APPROACH (DARK) -->
+  <section class="approach" id="approach">
+    <div>
+      <span class="label" style="margin-bottom: 32px; display: inline-block;">Approach</span>
+      <h2 class="approach__heading">Machines do the<br>reading. <em>We do</em><br>the thinking.</h2>
+    </div>
+    <div class="approach__body">
+      <p>The agencies you grew up admiring were built on instinct, taste, and one extraordinary mind in a room. We respect that. We also know it doesn't scale to the speed your category now moves at.</p>
+      <p>So Pragma runs a different stack: AI agents do the listening across reviews, communities, transcripts, and search — at a depth no analyst can match. Then a senior strategist does what only humans still do well. They decide what it means.</p>
+      <div class="approach__pillars">
+        <div>
+          <div class="pillar__num">01</div>
+          <div class="pillar__name">AI-Native</div>
+          <div class="pillar__desc">Research at machine scale, across every touchpoint your customer leaves a trace on.</div>
+        </div>
+        <div>
+          <div class="pillar__num">02</div>
+          <div class="pillar__name">Senior-Led</div>
+          <div class="pillar__desc">Every engagement steered by an operator who has actually built brands in India.</div>
+        </div>
+        <div>
+          <div class="pillar__num">03</div>
+          <div class="pillar__name">Decision-First</div>
+          <div class="pillar__desc">We deliver positions and bets, not 80-slide reports nobody finishes.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA (DARK) -->
+  <section class="final-cta" id="contact">
+    <span class="label final-cta__label">— Begin a conversation</span>
+    <h2 class="final-cta__line">
+      Have a brand <em>worth<br>understanding?</em>
+    </h2>
+    <a href="https://www.linkedin.com/in/shivika-khanna-772ab8211/" target="_blank" rel="noopener" class="final-cta__link">
+      Connect on LinkedIn <span aria-hidden="true">↗</span>
+    </a>
+  </section>
+
+  <!-- FOOTER (DARK) -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">PRAGMA<span class="dot">.</span></div>
+      <div class="footer__col">
+        <h4>Studio</h4>
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Reach</h4>
+        <a href="https://www.linkedin.com/in/shivika-khanna-772ab8211/" target="_blank" rel="noopener">LinkedIn</a>
+        <p>India</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Pragma Intelligence. All rights reserved.</span>
+      <span class="made"><span class="pulse"></span> Made with intent in India</span>
+    </div>
+  </footer>
+
+</body>
+</html>
